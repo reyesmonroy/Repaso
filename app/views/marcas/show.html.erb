@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table table-bordered">
+	<tr>
+		<td>Nombre:</td>
+		<td><%= @marca.nombre %></td>
+	</tr>
+	<tr>
+		<td>Descripcion:</td>
+		<td><%= @marca.descripcion %></td>
+	</tr>
+	<tr>
+		<td>Estado:</td>
+		<td><%= @marca.estado %></td>
+	</tr>
+</table>
+
+<%= link_to 'Edit', edit_marca_path(@marca) %> |
+<%= link_to 'Back', marcas_path %>

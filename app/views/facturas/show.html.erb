@@ -1,0 +1,96 @@
+<%= simple_form_for(@factura_detalle) do |f| %>
+<%= f.error_notification %>
+<p id="notice"><%= notice %></p>
+
+<div style="padding: 20px; background-color: white">
+  <table class="table table-hover table-striped">
+    
+    <tr>
+      <th>Fecha:</</th>
+      <td><%= @factura.fecha %></td>
+    </tr>
+    <tr>
+      <th>Nit:</</th>
+      <td><%= @factura.nit %></td>
+    </tr>
+    <tr>
+      <th>Nombre:</</th>
+      <td><%= @factura.nombre %></td>
+    </tr>
+    <tr>
+      <th>Total:</</th>
+      <td> <%= @factura.total %></td>
+    </tr>
+    <tr>
+      <th>Estado:</</th>
+      <td><%= @factura.estado %></td>
+    </tr>
+    
+  </table>
+  <hr>
+  <%= f.association :factura, as: :hidden %>
+  <table class="table table-stripped table-hover">
+    <thead>
+      <tr>
+        
+        <th>Cantidad</th>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Total</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% contador=0 %>
+      <% @factura.factura_detalles.each do |factura_detalle| %>
+      <tr>
+        
+        <td><%= factura_detalle.cantidad %></td>
+        <td><%= factura_detalle.producto.nombre %></td>
+        <td><%= factura_detalle.precio %></td>
+        <td><%= factura_detalle.total %></td>
+        <td><%= link_to 'Eliminar', factura_detalle, class:"btn btn-danger",method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% contador=contador+factura_detalle.total %>
+      </tr>
+      <% end %>
+      <tr>
+        <td><%= f.input :cantidad, input_html: { class: 'form-control' } %></td>
+        <td><%= f.association :producto, label_method: :nombre, input_html: { class: 'form-control' }  %></td>
+        <td><%= f.input :precio, input_html: { readonly: true, class: 'form-control'} %></td>
+        <td><%= f.input :total, input_html: { readonly: true, class: 'form-control'} %></td>
+        <td><%= f.button :submit %></td>
+        
+      </tr>
+      <tr>
+        <td colspan="5" class="text-right" style="font-size:30px;">Total Q. <%= contador %></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+<%= link_to 'Edit', edit_factura_path(@factura) %> |
+<%= link_to 'Back', facturas_path %>
+</div>
+<% end %>
+
+<script>
+  $("#factura_detalle_producto_id").change(function (){
+      factura = $( "#factura_detalle_producto_id" ).val();
+      
+      $.get( "/productos/"+factura+".json", function( data ) {
+        console.log( data );
+        $("#factura_detalle_precio").val(data.producto.precio);
+
+        calcular_total();
+        
+      });
+   });
+  $("#factura_detalle_cantidad").change(function (){
+        calcular_total();
+    });
+
+    function calcular_total()
+    {
+       $("#factura_detalle_total").val($("#factura_detalle_precio").val()*$("#factura_detalle_cantidad").val());
+    }
+</script>

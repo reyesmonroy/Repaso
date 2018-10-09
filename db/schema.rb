@@ -10,7 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_04_144322) do
+ActiveRecord::Schema.define(version: 2018_10_08_161404) do
+
+  create_table "categorias", force: :cascade do |t|
+    t.text "descripcion"
+    t.string "estado"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "factura_detalles", force: :cascade do |t|
+    t.integer "factura_id"
+    t.integer "cantidad"
+    t.integer "producto_id"
+    t.decimal "precio"
+    t.decimal "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["factura_id"], name: "index_factura_detalles_on_factura_id"
+    t.index ["producto_id"], name: "index_factura_detalles_on_producto_id"
+  end
+
+  create_table "facturas", force: :cascade do |t|
+    t.date "fecha"
+    t.string "nit"
+    t.string "nombre"
+    t.decimal "total"
+    t.string "estado"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "marcas", force: :cascade do |t|
+    t.string "nombre"
+    t.text "descripcion"
+    t.string "estado"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "productos", force: :cascade do |t|
+    t.string "codigo"
+    t.string "nombre"
+    t.integer "marca_id"
+    t.integer "categoria_id"
+    t.text "descripcion"
+    t.decimal "costo"
+    t.decimal "ganancia"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["categoria_id"], name: "index_productos_on_categoria_id"
+    t.index ["marca_id"], name: "index_productos_on_marca_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

@@ -14,3 +14,12 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.irregular 'marca', 'marcas'
+  inflect.irregular 'categoria', 'categorias'
+  inflect.irregular 'producto', 'productos'
+  inflect.irregular 'factura', 'facturas'
+  inflect.irregular 'factura_detalle', 'factura_detalles'
+end

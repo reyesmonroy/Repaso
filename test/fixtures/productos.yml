@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codigo: MyString
+  nombre: MyString
+  marca: one
+  categoria: one
+  descripcion: MyText
+  costo: 9.99
+  ganancia: 9.99
+
+two:
+  codigo: MyString
+  nombre: MyString
+  marca: two
+  categoria: two
+  descripcion: MyText
+  costo: 9.99
+  ganancia: 9.99

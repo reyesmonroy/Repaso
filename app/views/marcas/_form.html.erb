@@ -1,0 +1,18 @@
+<%= simple_form_for @marca do |f| %>
+  
+  <%- if f.error_notification %>
+    <div class="alert alert-danger" role="alert">
+      <a class="close" data-dismiss="alert" href="#">&times;</a>
+      <%= f.error_notification %>
+    </div>
+  <%- end %>
+
+  <div class="form-group">
+    <%= f.input :nombre, label: 'Nombre',wrapper_html: { class: "is_invalid"}, input_html: { class: 'form-control' } %>
+    <%= f.input :descripcion, label: 'Descripción',input_html: { class: 'form-control' } %>
+    <%= f.input :estado, collection: ["Activa","Inactiva"], input_html: { class: 'form-control' } %>
+  </div>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
+
+

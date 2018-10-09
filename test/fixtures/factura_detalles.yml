@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  factura: one
+  cantidad: 1
+  producto: one
+  precio: 9.99
+  total: 9.99
+
+two:
+  factura: two
+  cantidad: 1
+  producto: two
+  precio: 9.99
+  total: 9.99
