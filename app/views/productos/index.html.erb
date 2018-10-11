@@ -2,7 +2,7 @@
 
 <h1>Productos</h1>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>Codigo</th>
@@ -21,8 +21,8 @@
       <tr>
         <td><%= producto.codigo %></td>
         <td><%= producto.nombre %></td>
-        <td><%= producto.marca %></td>
-        <td><%= producto.categoria %></td>
+        <td><%= producto.marca.nombre %></td>
+        <td><%= producto.categoria.descripcion %></td>
         <td><%= producto.descripcion %></td>
         <td><%= producto.costo %></td>
         <td><%= producto.ganancia %></td>

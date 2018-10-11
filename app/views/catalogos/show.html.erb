@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @catalogo.titulo %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @catalogo.descripcion %>
+</p>
+
+<%= image_tag @catalogo.header_image.variant(resize: "120x120"), class: 'img-thumbnail' %>
+
+<div>
+  <% @catalogo.uploads.each do |upload| %>
+    <% if upload.variable? %>
+      <%= image_tag upload.variant(resize: "100x100") %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to 'Edit', edit_catalogo_path(@catalogo) %> |
+<%= link_to 'Back', catalogos_path %>

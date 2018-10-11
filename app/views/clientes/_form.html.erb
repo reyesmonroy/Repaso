@@ -1,0 +1,13 @@
+
+<%= simple_form_for(@cliente) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :nit, input_html: { class: 'form-control'} %>
+    <%= f.input :nombre, input_html: { class: 'form-control'} %>
+    <%= f.input :direccion, input_html: { class: 'form-control'} %>
+    <%= f.button :submit, input_html: { class: 'btn btn-success' } %>
+  </div>
+
+<% end %>

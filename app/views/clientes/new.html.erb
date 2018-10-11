@@ -1,0 +1,18 @@
+<h1>New Cliente</h1>
+
+<%= render 'form', cliente: @cliente %>
+
+<%= link_to 'Back', clientes_path %>
+
+
+<script>
+	$('#cliente_nit').blur(function() {
+		var nit= $(this).val();
+		$.get( "/consumo/"+nit, function( data ) {
+	        console.log( data);
+	        $('#cliente_nombre').val(data.nombre);
+	        $('#cliente_direccion').val(data.direccion_completa);
+	        
+	      });
+	});
+</script>

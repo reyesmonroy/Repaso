@@ -22,4 +22,6 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'producto', 'productos'
   inflect.irregular 'factura', 'facturas'
   inflect.irregular 'factura_detalle', 'factura_detalles'
+  inflect.irregular 'catalogo', 'catalogos'
+  inflect.irregular 'cliente', 'clientes'
 end

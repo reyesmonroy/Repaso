@@ -40,3 +40,6 @@ end
 group :production do
   gem 'pg'
 end
+gem "paperclip", "~> 6.0.0"
+gem "mini_magick"
+gem 'savon', '~> 2.0'

@@ -10,4 +10,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_attached_file :avatar, styles: { medium: "300x300", thumb: "100x100" }
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
+  has_one_attached :avatar
 end

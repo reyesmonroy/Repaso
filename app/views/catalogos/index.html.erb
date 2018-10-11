@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Catalogos</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Imagen</th>
+      <th>Desbcripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @catalogos.each do |catalogo| %>
+      <tr>
+        <td><%= catalogo.titulo %></td>
+        <td><%= image_tag catalogo.header_image.variant(resize: "80x80"), class: 'img-thumbnail' %></td>
+        <td><%= catalogo.descripcion %></td>
+        <td><%= link_to 'Show', catalogo, class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_catalogo_path(catalogo), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Destroy', catalogo, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Catalogo', new_catalogo_path %>
