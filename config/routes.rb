@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :users
 
   get '/consumo/:nit', to: 'clientes#consumir'
+  get '/espacio/:codigo', to: 'clientes#claro'
 end

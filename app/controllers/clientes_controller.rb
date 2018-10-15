@@ -8,11 +8,16 @@ class ClientesController < ApplicationController
   end
 
   def consumir
-    client = Savon.client(wsdl: "https://www.ingface.net/ServiciosIngface/ingfaceWsServices?wsdl")
-    response = client.call(:nit_contribuyentes, message: { usuario: "DEMO", clave: "C2FDC80789AFAF22C372965901B16DF533A4FCB19FD9F2FD5CBDA554032983B0", nit: params[:nit] })
-    result = JSON.parse(response.body.to_json)
+    #client = Savon.client(wsdl: "https://www.ingface.net/ServiciosIngface/ingfaceWsServices?wsdl")
+    #esponse = client.call(:nit_contribuyentes, message: { usuario: "DEMO", clave: "C2FDC80789AFAF22C372965901B16DF533A4FCB19FD9F2FD5CBDA554032983B0", nit: params[:nit] })
+    #result = JSON.parse(response.body.to_json)
     #render html: "<h1>Hola Mundo</h1>" + 'pedro' + result['']
-    render :json => result['nit_contribuyentes_response']['return']
+    #render :json => result['nit_contribuyentes_response']['return']
+    render :json => helpers.consultar_nit(params[:nit])
+  end
+
+  def claro
+    render :json => helpers.consultar_nit(params[:codigo])
   end
   
   # GET /clientes/1
