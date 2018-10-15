@@ -38,7 +38,7 @@ group :development, :test do
   gem 'sqlite3'
 end
 group :production do
-  gem 'pg'
+  gem 'sqlite3'
 end
 gem "paperclip", "~> 6.0.0"
 gem "mini_magick"

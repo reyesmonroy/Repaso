@@ -9,9 +9,14 @@
 		var nit= $(this).val();
 		$.get( "/consumo/"+nit, function( data ) {
 	        console.log( data);
-	        $('#cliente_nombre').val(data.nombre);
-	        $('#cliente_direccion').val(data.direccion_completa);
-	        
+	         
+	        if (data.nombre!='Nit no valido') {
+	        	$('#cliente_nombre').val(data.nombre);
+	        	$('#cliente_direccion').val(data.direccion_completa);
+	        }else{
+	        	$('#cliente_nombre').val(data.nombre);
+	        	$('#cliente_direccion').val('');
+	        }
 	      });
 	});
 </script>
